@@ -173,4 +173,9 @@ public class DisparoPlayer : MonoBehaviour
         }
     }
 
+    public void SetDisparo(int _tipo)
+    {
+        playernum = _tipo;
+    }
+
 }

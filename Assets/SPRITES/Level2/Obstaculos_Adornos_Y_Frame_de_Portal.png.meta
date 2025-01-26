@@ -1,0 +1,699 @@
+fileFormatVersion: 2
+guid: 26e4dac563c6f774a8b947bf50bd2021
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_0
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 3529
+        width: 354
+        height: 388
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a047009453bafda41b10ad0a9de64502
+      internalID: -102610453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_1
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 3533
+        width: 354
+        height: 388
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e47561d7d6c7942b35137137e6b78f
+      internalID: -736433813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_2
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 3537
+        width: 354
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af229997c5a3db74b99d38e005ac3177
+      internalID: -2025905671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_3
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 3149
+        width: 284
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a462d85753ef6194ba21d7b869280b6b
+      internalID: -1842044490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_4
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 3153
+        width: 285
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 627777c096c8b22479f72be7ca1e3d94
+      internalID: -554237712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_5
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 3157
+        width: 284
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5499de19c832ce648b46290de3780341
+      internalID: -1696838557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_6
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 2683
+        width: 284
+        height: 416
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96d7eac7788402b41a09fea9031f8a21
+      internalID: -585444161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_7
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 2677
+        width: 278
+        height: 412
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a84dcaf9f8dc174b88db125558f5d8b
+      internalID: -1467631650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_8
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 2685
+        width: 278
+        height: 412
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1dfedeb878f01541b0b54b1f49fe999
+      internalID: 1617213624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_9
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 2281
+        width: 144
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d63052adf281804890172d4222eab58
+      internalID: -1892504134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_10
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 2283
+        width: 144
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f752babc1d7d4ed408b04dbbdc8c0697
+      internalID: -1602682305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_11
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 2291
+        width: 144
+        height: 276
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0d36475d5246904dab4e8dee7dbb3a1
+      internalID: -919810011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_12
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 1791
+        width: 128
+        height: 442
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8bea563ecc1d5042b32c3362bb0ec8a
+      internalID: -1197743472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_13
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 1793
+        width: 120
+        height: 430
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32cdfa173ea44f243add3cc44dd4aa7d
+      internalID: -1763224609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_14
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 1803
+        width: 118
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc69afa059f1d54e8cab2fd40f19f6d
+      internalID: -827103904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_15
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 1469
+        width: 248
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccc9803233648645bdbb36a158e9078
+      internalID: 1141484322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_16
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 1473
+        width: 250
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c076fdd47d8e47b408bac0556e71b070
+      internalID: 727232741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_17
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 1469
+        width: 248
+        height: 252
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c078e6de4308354b9e3f891947c758e
+      internalID: -443983104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_18
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 377
+        width: 840
+        height: 1076
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f452909ccaf8f964ab78056d4b5a55ef
+      internalID: -1373553487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_19
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1205
+        width: 86
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0138eace3f3da0749829319caaf35c24
+      internalID: 233464028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_20
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 1255
+        width: 166
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c974289911e46804cb56a0b53ca28f1b
+      internalID: -1786080030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_21
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 1199
+        width: 101
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 227504d4bbf30ee4fa8f0c672036c451
+      internalID: -582329672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_22
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 397
+        width: 838
+        height: 1017
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 649d401c2d364b249be3f5873371cece
+      internalID: -1632618078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_23
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 1235
+        width: 112
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dece4e9b8e2b9cc43bec208c937b6864
+      internalID: 380509823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_24
+      rect:
+        serializedVersion: 2
+        x: 1567
+        y: 1207
+        width: 84
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5ad606d98aa0846870a60015128746
+      internalID: 965169255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Obstaculos_Adornos_Y_Frame_de_Portal_25
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 929
+        width: 74
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38acde63d109cd948b2f77c67373103a
+      internalID: -1938938379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Obstaculos_Adornos_Y_Frame_de_Portal_0: -102610453
+      Obstaculos_Adornos_Y_Frame_de_Portal_1: -736433813
+      Obstaculos_Adornos_Y_Frame_de_Portal_10: -1602682305
+      Obstaculos_Adornos_Y_Frame_de_Portal_11: -919810011
+      Obstaculos_Adornos_Y_Frame_de_Portal_12: -1197743472
+      Obstaculos_Adornos_Y_Frame_de_Portal_13: -1763224609
+      Obstaculos_Adornos_Y_Frame_de_Portal_14: -827103904
+      Obstaculos_Adornos_Y_Frame_de_Portal_15: 1141484322
+      Obstaculos_Adornos_Y_Frame_de_Portal_16: 727232741
+      Obstaculos_Adornos_Y_Frame_de_Portal_17: -443983104
+      Obstaculos_Adornos_Y_Frame_de_Portal_18: -1373553487
+      Obstaculos_Adornos_Y_Frame_de_Portal_19: 233464028
+      Obstaculos_Adornos_Y_Frame_de_Portal_2: -2025905671
+      Obstaculos_Adornos_Y_Frame_de_Portal_20: -1786080030
+      Obstaculos_Adornos_Y_Frame_de_Portal_21: -582329672
+      Obstaculos_Adornos_Y_Frame_de_Portal_22: -1632618078
+      Obstaculos_Adornos_Y_Frame_de_Portal_23: 380509823
+      Obstaculos_Adornos_Y_Frame_de_Portal_24: 965169255
+      Obstaculos_Adornos_Y_Frame_de_Portal_25: -1938938379
+      Obstaculos_Adornos_Y_Frame_de_Portal_3: -1842044490
+      Obstaculos_Adornos_Y_Frame_de_Portal_4: -554237712
+      Obstaculos_Adornos_Y_Frame_de_Portal_5: -1696838557
+      Obstaculos_Adornos_Y_Frame_de_Portal_6: -585444161
+      Obstaculos_Adornos_Y_Frame_de_Portal_7: -1467631650
+      Obstaculos_Adornos_Y_Frame_de_Portal_8: 1617213624
+      Obstaculos_Adornos_Y_Frame_de_Portal_9: -1892504134
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

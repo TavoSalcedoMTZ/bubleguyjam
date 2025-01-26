@@ -7,7 +7,7 @@ public class AiAgent6 : MonoBehaviour
     [SerializeField] private GameObject prefabBala;  // Prefab de la bala a disparar
     [SerializeField] private float velocidadBala;  // Velocidad de la bala
     [SerializeField] private float intervaloDisparo;  // Intervalo entre disparos
-    [SerializeField] private JabonManage jugador;
+    [SerializeField] private JabonManage jabonManage;
 
     private void Start()
     {
@@ -28,6 +28,10 @@ public class AiAgent6 : MonoBehaviour
         }
     }
 
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
+    }
     public void Disparar()
     {
         if (prefabBala != null && target != null)

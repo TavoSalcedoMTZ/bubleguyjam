@@ -11,6 +11,7 @@ public class AiAgent3 : MonoBehaviour, IEnemigo
     [SerializeField] private Transform target;
     [SerializeField] private Transform posicion1;
     [SerializeField] private Transform posicion2;
+    [SerializeField] private JabonManage jabonManage;
 
     [SerializeField] private float stopDistanceThreshold;
     private float distanceToTarget;
@@ -37,6 +38,11 @@ public class AiAgent3 : MonoBehaviour, IEnemigo
         {
             MovimientoEntrePosiciones(); // Mueve entre las posiciones predeterminadas
         }
+    }
+
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
     }
 
     private void MovimientoEntrePosiciones()

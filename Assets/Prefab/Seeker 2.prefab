@@ -178,6 +178,7 @@ MonoBehaviour:
   target: {fileID: 0}
   stopDistanceThreshold: 1.35
   collider2D: {fileID: 6090449828441463993}
+  jabonManage: {fileID: 0}
   jabon: {fileID: 0}
 --- !u!114 &-1142676823364700618
 MonoBehaviour:

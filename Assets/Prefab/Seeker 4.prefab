@@ -175,7 +175,7 @@ MonoBehaviour:
   target: {fileID: 0}
   moveSpeed: 2
   stopDistance: 0.5
-  jabon: {fileID: 0}
+  jabonManage: {fileID: 0}
 --- !u!114 &-6295030081440136639
 MonoBehaviour:
   m_ObjectHideFlags: 0

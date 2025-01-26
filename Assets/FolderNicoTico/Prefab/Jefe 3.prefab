@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 7572337269616800063}
   - component: {fileID: 5410135354814838919}
   - component: {fileID: 6738112159935861232}
-  - component: {fileID: 7875262162181935889}
-  - component: {fileID: 1377253790278086801}
   - component: {fileID: 7545929054476560749}
   m_Layer: 0
   m_Name: Jefe 3
@@ -30,7 +28,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931008819568976270}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.736647, y: 2.557028, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -38,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 7720956717706036180}
   m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8998843996026628644
 SpriteRenderer:
@@ -188,51 +186,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7875262162181935889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931008819568976270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b8d93d19d56244a9d35e827419d5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeedInicial: 3.69
-  moveSpeedMax: 25
-  target: {fileID: 0}
-  tiempoAtaque: 1
-  velocidadBala: 15
-  stopDistanceThresholdCac: 1.35
-  stopDistanceThresholdDis: 8
-  prefabBala: {fileID: 9095635798791073064, guid: bec55b5b648a3434fadd5f41e2942f68, type: 3}
-  puntoDeDisparo: {fileID: 7720956717706036180}
-  jugador: {fileID: 0}
-  proyectil: {fileID: 4925618398044415178, guid: bec55b5b648a3434fadd5f41e2942f68, type: 3}
-  prefabToSpawn: {fileID: 6818277322688023580, guid: b7924768d942cdb4180eb3253e8d52d7, type: 3}
-  enemigoScript: {fileID: 1377253790278086801}
-  spawnArea: {fileID: 7545929054476560749}
-  tiempoGenerarPrefab: 3
-  probabilidadGenerarPrefab: 0.6
-  tiempoparaprobabilidadDeCambiarTipoAtaque: 3
-  probabilidadDeCambiarTipoAtaque: 0.5
---- !u!114 &1377253790278086801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931008819568976270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba4fb16b0d43034dad09dd9119bd9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jabonManage: {fileID: 0}
-  enemymanager: {fileID: 0}
-  Vida: 25
 --- !u!58 &7545929054476560749
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -291,11 +244,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557186935990163327}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.65, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8577708861236948390}
+  m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

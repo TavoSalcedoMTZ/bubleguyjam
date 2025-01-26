@@ -11,6 +11,7 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
     [SerializeField] private float intervaloDisparo; // Intervalo entre disparos
     [SerializeField] private PolygonCollider2D zonaLuzCollider; // Collider que define la zona de luz
     [SerializeField] private LayerMask capaObstaculos; // Capa de obstáculos para raycast
+    [SerializeField] private JabonManage jabonManage;
 
     private bool objetivoVisible = false;
 
@@ -25,6 +26,11 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
     public void SetEnemyManager(EnemyManager manager)
     {
         enemyManager = manager;  // Asignamos el EnemyManager al agente
+    }
+
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
     }
 
     private void Start()

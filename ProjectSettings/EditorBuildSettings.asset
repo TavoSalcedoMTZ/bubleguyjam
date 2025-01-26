@@ -4,5 +4,32 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: c6f7bd03daecc6b46ba17582f3f1203a
+  - enabled: 1
+    path: Assets/Scenes/Etapa1.unity
+    guid: 6a489adfb48f44a428f0fc4e856a918e
+  - enabled: 1
+    path: Assets/Scenes/Etapa2.unity
+    guid: 9493fd6cd7ed2924a93981716eafa61e
+  - enabled: 1
+    path: Assets/Scenes/Etapa3.unity
+    guid: 7863e29bee5d0804c8e0b9bc1ea0707e
+  - enabled: 1
+    path: Assets/Scenes/Inicio.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Principal.unity
+    guid: 3aca5ca360d719e4b8bb05f88ee53314
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 36f7e05da02977f408d07d56c12c8960
+  - enabled: 1
+    path: Assets/Scenes/Vitoria.unity
+    guid: 8171f893f7de2134e83efecd01df2df4
+  - enabled: 1
+    path: Assets/Scenes/SeleccionPersonaje.unity
+    guid: a9010f397aac3494dbea67384d8caf92
   m_configObjects: {}

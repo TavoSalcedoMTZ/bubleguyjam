@@ -12,16 +12,9 @@ public class Spawners : MonoBehaviour
 
     [SerializeField] private Transform target;
     public EnemyManager enemyManager;
-
-    /*
-    Los enemigos se van a generar conforme las posiciones 
-    Por ejemplo, el enemigo[1] se va a generar en el spawn[1] 
-    */
-
-    private void Start()
-    {
-        SpawearEnemigos();
-    }
+    public JabonManage jabon;
+    // Número de enemigos a spawnear
+    public int numberOfEnemiesToSpawn = 3;
 
     private void Update()
     {
@@ -35,24 +28,64 @@ public class Spawners : MonoBehaviour
     {
         void SetTarget(Transform target);
         void SetEnemyManager(EnemyManager manager); // Agregar un método para asignar el EnemyManager
+        void SetJabonManage(JabonManage jabonmanage);
     }
 
     public void SpawearEnemigos()
     {
-        for (int a = 0; a < enemigo.Length; a++)
+        // Creamos una lista de índices de puntos de spawn para randomizar
+        List<int> spawnIndices = new List<int>();
+        for (int i = 0; i < puntoSpawn.Length; i++)
         {
-            // Instanciar el enemigo en la posición correspondiente
-            GameObject enemigoInstanciado = Instantiate(enemigo[a], puntoSpawn[a], Quaternion.identity);
+            spawnIndices.Add(i);
+        }
 
-            // Incrementar el contador de enemigos vivos
-            enemyManager.totalEnemiesAlive++;
+        // Mezclamos los índices para obtener una selección aleatoria de puntos de spawn
+        Shuffle(spawnIndices);
 
-            // Verificar si el enemigo tiene el componente IEnemigo y asignar el target
-            if (enemigoInstanciado.TryGetComponent(out IEnemigo targetableEnemigo))
+        // Creamos una lista de enemigos a spawn
+        List<GameObject> selectedEnemies = new List<GameObject>();
+        for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+        {
+            selectedEnemies.Add(enemigo[Random.Range(0, enemigo.Length)]); // Seleccionamos un enemigo aleatorio
+        }
+
+        // Spawn de enemigos con posiciones aleatorias
+        for (int i = 0; i < numberOfEnemiesToSpawn; i++)
+        {
+            if (i < spawnIndices.Count)  // Nos aseguramos de no sobrepasar la cantidad de puntos de spawn disponibles
             {
-                targetableEnemigo.SetTarget(target); // Asignar el target
-                targetableEnemigo.SetEnemyManager(enemyManager); // Asignar el EnemyManager
+                // Seleccionar aleatoriamente un punto de spawn
+                Vector2 spawnPosition = puntoSpawn[spawnIndices[i]];
+
+                // Seleccionamos un enemigo aleatorio de la lista
+                GameObject enemigoInstanciado = Instantiate(selectedEnemies[i], spawnPosition, Quaternion.identity);
+
+                // Incrementar el contador de enemigos vivos
+                enemyManager.totalEnemiesAlive++;
+
+                // Verificar si el enemigo tiene el componente IEnemigo y asignar el target
+                if (enemigoInstanciado.TryGetComponent(out IEnemigo targetableEnemigo))
+                {
+                    targetableEnemigo.SetTarget(target); // Asignar el target
+                    targetableEnemigo.SetEnemyManager(enemyManager); // Asignar el EnemyManager
+                    targetableEnemigo.SetJabonManage(jabon);
+                }
             }
+        }
+    }
+
+    // Función para mezclar los índices aleatorios de la lista
+    private void Shuffle(List<int> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            int value = list[k];
+            list[k] = list[n];
+            list[n] = value;
         }
     }
 }

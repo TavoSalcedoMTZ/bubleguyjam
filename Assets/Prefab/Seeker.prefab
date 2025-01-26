@@ -30,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6677628324388736940}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.71, y: -4.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5095162166459058601
 SpriteRenderer:
@@ -174,7 +174,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   target: {fileID: 0}
+  enemyManager: {fileID: 0}
   stopDistanceThreshold: 1.35
+  jabonManage: {fileID: 0}
 --- !u!114 &-6012899844011500305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba4fb16b0d43034dad09dd9119bd9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jabonManage: {fileID: 0}
+  enemymanager: {fileID: 0}
   Vida: 10
 --- !u!58 &-3282815048492118837
 CircleCollider2D:

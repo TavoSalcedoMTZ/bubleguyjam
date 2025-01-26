@@ -10,7 +10,7 @@ public class AiAgent4 : MonoBehaviour, IEnemigo
     [SerializeField] private Transform target;        // Objetivo al que el agente debe seguir
     [SerializeField] private float moveSpeed;        // Velocidad de movimiento
     [SerializeField] private float stopDistance;     // Distancia mínima para detenerse
-    [SerializeField] private JabonManage jabon;
+    [SerializeField] private JabonManage jabonManage;
 
     private EnemyManager enemyManager;  // Referencia al EnemyManager
 
@@ -34,7 +34,12 @@ public class AiAgent4 : MonoBehaviour, IEnemigo
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        jabon.JabonDicrese(1);
+        jabonManage.JabonDicrese(1);
+    }
+
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
     }
 
     // Implementación de la interfaz IEnemigo

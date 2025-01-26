@@ -12,6 +12,7 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
     [SerializeField] private float stopDistanceThreshold;
     private float distanceToTarget;
     [SerializeField] private Collider2D collider2D;
+    [SerializeField] private JabonManage jabonManage;
 
     private bool isFollowing = false;
 
@@ -38,6 +39,11 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+    }
+
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
     }
 
     // Implementación de SetEnemyManager

@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Necesario para trabajar con UI
 
 public class JabonManage : MonoBehaviour
 {
@@ -8,13 +9,16 @@ public class JabonManage : MonoBehaviour
     private DisparoPlayer player; // Referencia al script del jugador
     public Transform playerTransf; // Transform del jugador para escalar
     private Vector3 initialScale; // Escala inicial del jugador
-    private float maxJabon = 15f; // Valor máximo de jabón
+    public int maxJabon = 15; // Valor máximo de jabón
 
     // Prefabs originales de referencia (no se escalan)
     public List<Transform> burbujasOriginales;
 
     // Instancias escalables en la escena
     public List<Transform> burbujasEscalables;
+
+    // Referencia a la imagen de tipo Filled (filler)
+    public Image jabonFiller;
 
     void Start()
     {
@@ -39,6 +43,12 @@ public class JabonManage : MonoBehaviour
                 burbujasEscalables[i].localScale = burbujasOriginales[i].localScale;
             }
         }
+
+        // Asegúrate de que el Filler (Image) esté configurado correctamente
+        if (jabonFiller != null)
+        {
+            jabonFiller.fillAmount = Mathf.InverseLerp(0, maxJabon, Jabon); // Inicializa el llenado de la imagen
+        }
     }
 
     void Update()
@@ -47,6 +57,14 @@ public class JabonManage : MonoBehaviour
         {
             Debug.Log("Te has quedado sin jabón");
             player.canShoot = false; // Desactiva la capacidad de disparar
+            string scene_name = "Game Over";
+            SceneManager.LoadScene(scene_name);
+        }
+
+        // Actualiza el Filler con el valor del jabón
+        if (jabonFiller != null)
+        {
+            jabonFiller.fillAmount = Mathf.InverseLerp(0, maxJabon, Jabon); // Cambia la cantidad de llenado
         }
     }
 

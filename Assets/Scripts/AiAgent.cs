@@ -92,6 +92,11 @@ public class AiAgent : MonoBehaviour, IEnemigo
         enemyManager = manager; // Asigna el EnemyManager
     }
 
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
+    }
+
     // Método para seguir al objetivo
     public void Seguimiento1()
     {

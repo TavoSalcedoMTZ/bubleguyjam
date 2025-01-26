@@ -10,6 +10,7 @@ public class AiAgent5 : MonoBehaviour, IEnemigo
     [SerializeField] private float moveSpeedMax;
     [SerializeField] private float moveSpeedInicial;
     [SerializeField] private Transform target;
+    [SerializeField] private JabonManage jabonManage;
 
     [SerializeField] private float stopDistanceThreshold;
     private float distanceToTarget;
@@ -59,6 +60,11 @@ public class AiAgent5 : MonoBehaviour, IEnemigo
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
+    }
+
+    public void SetJabonManage(JabonManage jabon)
+    {
+        jabonManage = jabon;
     }
 
     public void SeguimientoPrefab()

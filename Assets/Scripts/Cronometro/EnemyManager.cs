@@ -1,11 +1,12 @@
-using UnityEngine;
+    using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public int totalEnemiesAlive; 
-
+    public int totalEnemiesAlive;
+    public bool stageFree;
     void Start()
     {
+        stageFree = false;
     }
 
 
@@ -19,5 +20,17 @@ public class EnemyManager : MonoBehaviour
     {
         // Retorna verdadero si aún quedan enemigos vivos
         return totalEnemiesAlive > 0;
+    }
+
+    private void Update()
+    {
+        if (totalEnemiesAlive == 0)
+        {
+            stageFree=true;
+        }
+        else if(totalEnemiesAlive != 0)
+        {
+            stageFree=false;
+        }
     }
 }
