@@ -62,7 +62,7 @@ public class DisparoPlayer : MonoBehaviour
         Rigidbody2D rb = proyectil.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = puntoDisparo.right * disparoSpeed; 
+            rb.linearVelocity = puntoDisparo.right * disparoSpeed; 
         }
 
    
@@ -92,15 +92,15 @@ public class DisparoPlayer : MonoBehaviour
             if (rb != null && rb2 != null && rb3 != null)
             {
 
-                rb.velocity = puntoDisparo.right * disparoSpeed;
+                rb.linearVelocity = puntoDisparo.right * disparoSpeed;
 
           
                 Vector2 direccionIzquierda = Quaternion.Euler(0, 0, -10) * puntoDisparo.right;
                 Vector2 direccionDerecha = Quaternion.Euler(0, 0, 10) * puntoDisparo.right; 
 
          
-                rb2.velocity = direccionIzquierda * disparoSpeed;
-                rb3.velocity = direccionDerecha * disparoSpeed ;
+                rb2.linearVelocity = direccionIzquierda * disparoSpeed;
+                rb3.linearVelocity = direccionDerecha * disparoSpeed ;
             }
         }
     }
@@ -133,18 +133,18 @@ public class DisparoPlayer : MonoBehaviour
             if (rb != null && rb2 != null && rb3 != null)
             {
 
-                rb.velocity = puntoDisparo.right * disparoSpeed;
-                rb2.velocity = puntoDisparo.right * disparoSpeed;
-                rb3.velocity = puntoDisparo.right * disparoSpeed;
-                rb4.velocity = puntoDisparo.right * disparoSpeed;
-                rb5.velocity = puntoDisparo.right * disparoSpeed;
+                rb.linearVelocity = puntoDisparo.right * disparoSpeed* 0.1f;
+                rb2.linearVelocity = puntoDisparo.right * disparoSpeed* 0.1f;
+                rb3.linearVelocity = puntoDisparo.right * disparoSpeed * 0.1f;
+                rb4.linearVelocity = puntoDisparo.right * disparoSpeed * 0.1f;
+                rb5.linearVelocity = puntoDisparo.right * disparoSpeed * 0.1f;
 
             }
-            Destroy(proyectil, tiempoVida);
-            Destroy(proyectil2, tiempoVida);
-            Destroy(proyectil3, tiempoVida);
-            Destroy(proyectil4, tiempoVida);
-            Destroy(proyectil5, tiempoVida);
+            Destroy(proyectil, tiempoVida*2f);
+            Destroy(proyectil2, tiempoVida*2f);
+            Destroy(proyectil3, tiempoVida*2f);
+            Destroy(proyectil4, tiempoVida*2f);
+            Destroy(proyectil5, tiempoVida*2f);
         }
     }
 
@@ -164,7 +164,7 @@ public class DisparoPlayer : MonoBehaviour
             Rigidbody2D rb = proyectil.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = puntoDisparo.right * disparoSpeed;
+                rb.linearVelocity = puntoDisparo.right * disparoSpeed;
             }
 
 

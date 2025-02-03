@@ -13,11 +13,11 @@ public class AtaqueJefe3Distancia : MonoBehaviour
             // Instanciar el proyectil
             GameObject proyectil = Instantiate(prefabBala, puntoDeDisparo.position, puntoDeDisparo.rotation);
 
-            // Configurar la dirección del proyectil
+            // Configurar la direcciï¿½n del proyectil
             Rigidbody2D rb = proyectil.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = direccion * proyectil.GetComponent<Proyectil>().velocidad;
+                rb.linearVelocity = direccion * proyectil.GetComponent<Proyectil>().velocidad;
             }
         }
     }

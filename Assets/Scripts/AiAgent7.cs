@@ -10,7 +10,7 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
     [SerializeField] private float velocidadBala; // Velocidad de la bala
     [SerializeField] private float intervaloDisparo; // Intervalo entre disparos
     [SerializeField] private PolygonCollider2D zonaLuzCollider; // Collider que define la zona de luz
-    [SerializeField] private LayerMask capaObstaculos; // Capa de obstáculos para raycast
+    [SerializeField] private LayerMask capaObstaculos; // Capa de obstï¿½culos para raycast
     [SerializeField] private JabonManage jabonManage;
 
     private bool objetivoVisible = false;
@@ -22,7 +22,7 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
         target = newTarget;
     }
 
-    // Implementación de SetEnemyManager para cumplir con la interfaz IEnemigo
+    // Implementaciï¿½n de SetEnemyManager para cumplir con la interfaz IEnemigo
     public void SetEnemyManager(EnemyManager manager)
     {
         enemyManager = manager;  // Asignamos el EnemyManager al agente
@@ -47,12 +47,12 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
     {
         if (target != null)
         {
-            // Verificar si el objetivo está dentro de la zona de luz
+            // Verificar si el objetivo estï¿½ dentro de la zona de luz
             if (zonaLuzCollider.OverlapPoint(target.position))
             {
-                // Verificar si el objetivo está en línea de visión (sin obstáculos)
+                // Verificar si el objetivo estï¿½ en lï¿½nea de visiï¿½n (sin obstï¿½culos)
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, target.position - transform.position, zonaLuzCollider.bounds.extents.magnitude, capaObstaculos);
-                if (hit.collider == null) // No hay obstáculos entre el enemigo y el target
+                if (hit.collider == null) // No hay obstï¿½culos entre el enemigo y el target
                 {
                     objetivoVisible = true;
                 }
@@ -72,7 +72,7 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
     {
         while (true)
         {
-            if (objetivoVisible) // Solo disparar si el objetivo está visible
+            if (objetivoVisible) // Solo disparar si el objetivo estï¿½ visible
             {
                 Disparar();
             }
@@ -91,9 +91,9 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
             if (rbBala != null)
             {
                 Vector2 direccion = (target.position - transform.position).normalized;
-                rbBala.velocity = direccion * velocidadBala;
+                rbBala.linearVelocity = direccion * velocidadBala;
 
-                Destroy(balaInstanciada, 4f);  // Destruir la bala después de 4 segundos
+                Destroy(balaInstanciada, 4f);  // Destruir la bala despuï¿½s de 4 segundos
             }
         }
         else
@@ -104,7 +104,7 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
 
     private void FixedUpdate()
     {
-        // Si el objetivo no está visible, el enemigo gira hacia él
+        // Si el objetivo no estï¿½ visible, el enemigo gira hacia ï¿½l
         if (!objetivoVisible && target != null)
         {
             Vector2 direccion = (target.position - transform.position).normalized;
@@ -113,7 +113,7 @@ public class AiAgent7 : MonoBehaviour, IEnemigo
         }
         else if (objetivoVisible)
         {
-            // Si el objetivo está visible, seguirlo (no rotar)
+            // Si el objetivo estï¿½ visible, seguirlo (no rotar)
             Vector2 direccion = (target.position - transform.position).normalized;
             float angle = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));

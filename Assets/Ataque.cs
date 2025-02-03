@@ -10,7 +10,7 @@ public class Ataque : MonoBehaviour
 
     public Enemigo enemigoScript;
 
-    // Método para controlar el tiempo de ataque y disparar
+    // Mï¿½todo para controlar el tiempo de ataque y disparar
     public void TemporizadorAtaque(Vector2 direccion)
     {
         temporizador += Time.deltaTime;
@@ -28,11 +28,11 @@ public class Ataque : MonoBehaviour
             // Instanciar el proyectil
             GameObject proyectil = Instantiate(prefabBala, puntoDeDisparo.position, puntoDeDisparo.rotation);
 
-            // Configurar la dirección del proyectil
+            // Configurar la direcciï¿½n del proyectil
             Rigidbody2D rb = proyectil.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = direccion * proyectil.GetComponent<Proyectil>().velocidad;
+                rb.linearVelocity = direccion * proyectil.GetComponent<Proyectil>().velocidad;
             }
         }
     }

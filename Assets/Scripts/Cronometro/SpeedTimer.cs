@@ -1,27 +1,24 @@
 using UnityEngine;
-using TMPro; // Para usar TextMeshPro
+using System.Collections;
 
 public class SpeedTimer : MonoBehaviour
 {
-
-    public TextMeshProUGUI timerText; // Referencia al texto del cronómetro
-    public TextMeshProUGUI speedText; // Referencia al texto de la velocidad
-
-    public float timerDuration = 10f; // Duración del cronómetro
+    public float timerDuration = 10f;
     private float currentTime;
     private bool timerRunning = false;
     public EnemyManager enemyManager;
-
-    private PlayerMovement originalScript; // Referencia al script original
-
+    private PlayerMovement originalScript;
+    public GameObject[] bubbles;
+    public float inflateTime = 1f;
+    public float maxSize = 2f;
+    private float explosionTime = 0.2f;
+    public float waitTime = 3.33f;
 
     void Start()
     {
         currentTime = timerDuration;
         originalScript = FindObjectOfType<PlayerMovement>();
-
         timerRunning = true;
-
     }
 
     void Update()
@@ -31,7 +28,6 @@ public class SpeedTimer : MonoBehaviour
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
-                UpdateUI();
             }
             else
             {
@@ -39,29 +35,21 @@ public class SpeedTimer : MonoBehaviour
                 TimerEnd();
             }
 
-            if (enemyManager.totalEnemiesAlive == 0)
+            if (enemyManager != null && enemyManager.totalEnemiesAlive == 0)
             {
                 StopTimerEarly();
             }
-
-            
         }
     }
-
-
 
     void TimerEnd()
     {
         timerRunning = false;
-
-        // Disminuir la velocidad si el tiempo termina
         if (originalScript != null)
         {
             originalScript.moveSpeed -= 1f;
         }
-
-        UpdateUI();
-        Debug.Log("Tiempo terminado. Nueva velocidad: " + originalScript.moveSpeed);
+        Debug.Log("Tiempo terminado. Nueva velocidad: " + (originalScript != null ? originalScript.moveSpeed.ToString() : "N/A"));
     }
 
     public void StopTimerEarly()
@@ -69,27 +57,57 @@ public class SpeedTimer : MonoBehaviour
         if (timerRunning)
         {
             timerRunning = false;
-
-            // Aumentar la velocidad si todos los enemigos son derrotados
             if (originalScript != null)
             {
                 originalScript.moveSpeed += 2f;
             }
-
-            UpdateUI();
-            Debug.Log("Todos los enemigos derrotados. Nueva velocidad: " + originalScript.moveSpeed);
+            Debug.Log("Todos los enemigos derrotados. Nueva velocidad: " + (originalScript != null ? originalScript.moveSpeed.ToString() : "N/A"));
+            StartCoroutine(InflateAndExplodeBubbles());
         }
     }
 
-    void UpdateUI()
+    IEnumerator InflateAndExplodeBubbles()
     {
-        // Actualizar el texto del cronómetro
-        timerText.text = "Tiempo: " + currentTime.ToString("F2");
-
-        // Actualizar el texto de la velocidad
-        if (originalScript != null)
+        for (int i = 0; i < bubbles.Length; i++)
         {
-            speedText.text = "Velocidad: " + originalScript.moveSpeed;
+            yield return new WaitForSeconds(waitTime);
+            yield return StartCoroutine(InflateBubble(bubbles[i]));
+            yield return StartCoroutine(ExplodeBubble(bubbles[i]));
         }
+    }
+
+    IEnumerator InflateBubble(GameObject bubble)
+    {
+        if (bubble == null) yield break;
+        Vector3 initialScale = bubble.transform.localScale;
+        Vector3 targetScale = initialScale * maxSize;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < inflateTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float scaleFactor = Mathf.Lerp(1f, maxSize, elapsedTime / inflateTime);
+            bubble.transform.localScale = initialScale * scaleFactor;
+            yield return null;
+        }
+        bubble.transform.localScale = targetScale;
+    }
+
+    IEnumerator ExplodeBubble(GameObject bubble)
+    {
+        if (bubble == null) yield break;
+        Vector3 initialScale = bubble.transform.localScale;
+        Vector3 targetScale = initialScale * 3f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < explosionTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float scaleFactor = Mathf.Lerp(1f, 3f, elapsedTime / explosionTime);
+            bubble.transform.localScale = initialScale * scaleFactor;
+            yield return null;
+        }
+        bubble.transform.localScale = targetScale;
+        bubble.SetActive(false);
     }
 }

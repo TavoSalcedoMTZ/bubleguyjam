@@ -55,7 +55,6 @@ public class AiAgent : MonoBehaviour, IEnemigo
     {
         while (!siguiendo)
         {
-            jabonManage.JabonDicrese(1); // Realizamos el ataque (ajustar a tu lógica)
             yield return new WaitForSeconds(1f); // Esperamos un segundo antes de atacar de nuevo
         }
     }

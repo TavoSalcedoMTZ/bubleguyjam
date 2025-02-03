@@ -23,7 +23,7 @@ public class OndaExpansiva : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colisión Hecha");
+        Debug.Log("Colisiï¿½n Hecha");
 
       
         Vector3 desplazamiento = new Vector3(0.5f, 0.5f, 0); 
@@ -53,9 +53,9 @@ public class OndaExpansiva : MonoBehaviour
    
         if (rb != null && rb2 != null && rb3 != null)
         {
-            rb.velocity = new Vector2(1, 0) * disparoSpeed; 
-            rb2.velocity = new Vector2(0, 1) * disparoSpeed; 
-            rb3.velocity = new Vector2(-1, 0) * disparoSpeed; 
+            rb.linearVelocity = new Vector2(1, 0) * disparoSpeed; 
+            rb2.linearVelocity = new Vector2(0, 1) * disparoSpeed; 
+            rb3.linearVelocity = new Vector2(-1, 0) * disparoSpeed; 
         }
 
  
