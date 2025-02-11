@@ -32,10 +32,7 @@ public class AiAgent4 : MonoBehaviour, IEnemigo
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        jabonManage.JabonDicrese(1);
-    }
+
 
     public void SetJabonManage(JabonManage jabon)
     {

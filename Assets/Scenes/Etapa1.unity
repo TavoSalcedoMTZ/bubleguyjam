@@ -7531,37 +7531,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &349791568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 349791569}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &349791569
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349791568}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9082909, y: 3.8607705, z: -0.02720752}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353249391
 GameObject:
   m_ObjectHideFlags: 0
@@ -49785,7 +49754,7 @@ GameObject:
   - component: {fileID: 2141364894}
   - component: {fileID: 2141364899}
   m_Layer: 5
-  m_Name: Interfas_momet
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49803,17 +49772,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8575374be8a2e147a18c0216bfbf456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbles:
-  - {fileID: 83700116}
-  - {fileID: 416281649}
-  - {fileID: 197787738}
-  - {fileID: 1476653119}
-  - {fileID: 2083258460}
-  - {fileID: 1159565113}
-  inflateTime: 1
-  maxSize: 1.84
-  explosionTime: 0.2
-  waitTime: 3.33
 --- !u!224 &2141364891
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50145,7 +50103,6 @@ SceneRoots:
   - {fileID: 1587653359}
   - {fileID: 1234376335}
   - {fileID: 1361705250}
-  - {fileID: 349791569}
   - {fileID: 310281587}
   - {fileID: 2141364891}
   - {fileID: 405517267}

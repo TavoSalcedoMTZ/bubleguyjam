@@ -76,10 +76,7 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        AplicarDanio(1); 
-    }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -90,16 +87,6 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
         }
     }
 
-    // Función para aplicar daño al enemigo
-    private void AplicarDanio(int cantidadDanio)
-    {
-        if (jabon != null)
-        {
-            jabon.JabonDicrese(cantidadDanio); // Llamamos a la función que recibe el daño en el script de salud
-        }
-        else
-        {
-            Debug.LogError("El objeto enemigo no tiene un script de salud asignado.");
-        }
-    }
+
+    
 }

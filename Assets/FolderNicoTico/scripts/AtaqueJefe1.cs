@@ -45,7 +45,7 @@ public class AtaqueJefe1 : MonoBehaviour
         while (true)
         {
             Debug.Log("Atacando al enemigo");
-            enemigoScript.HacerDano(2);
+         
             yield return new WaitForSeconds(tiempoAtaque);
         }
     }
