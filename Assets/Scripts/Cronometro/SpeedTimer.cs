@@ -14,13 +14,10 @@ public class SpeedTimer : MonoBehaviour
     private float explosionTime = 0.2f;
     public float waitTime = 3.33f;
 
-    void Start()
+    private void Start()
     {
-        currentTime = timerDuration;
-        originalScript = FindObjectOfType<PlayerMovement>();
-        timerRunning = true;
+       RestartTimer();
     }
-
     void Update()
     {
         if (timerRunning)
@@ -66,6 +63,34 @@ public class SpeedTimer : MonoBehaviour
         }
     }
 
+    public void RestartTimer()
+    {
+        if (!timerRunning)
+        {
+            currentTime = timerDuration;
+            timerRunning = true;
+            if (originalScript != null)
+            {
+                originalScript.moveSpeed -= 2f; // Restablecer la velocidad
+            }
+            ResetBubbles(); // Reiniciar las burbujas
+            Debug.Log("Temporizador reiniciado. Nueva velocidad: " + (originalScript != null ? originalScript.moveSpeed.ToString() : "N/A"));
+        }
+    }
+
+    void ResetBubbles()
+    {
+        foreach (GameObject bubble in bubbles)
+        {
+            if (bubble != null)
+            {
+                bubble.SetActive(true); // Reactivar las burbujas desactivadas
+                bubble.transform.localScale = Vector3.one; // Restablecer tamaño original
+            }
+        }
+        Debug.Log("Burbujas reiniciadas.");
+    }
+
     IEnumerator InflateAndExplodeBubbles()
     {
         for (int i = 0; i < bubbles.Length; i++)
@@ -79,7 +104,7 @@ public class SpeedTimer : MonoBehaviour
     IEnumerator InflateBubble(GameObject bubble)
     {
         if (bubble == null) yield break;
-        Vector3 initialScale = bubble.transform.localScale;
+        Vector3 initialScale = Vector3.one;
         Vector3 targetScale = initialScale * maxSize;
         float elapsedTime = 0f;
 

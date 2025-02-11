@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
     public EnemyManager enemyManager; // Referencia al EnemyManager
     public passWorld passWorld; // Cambié el nombre para reflejar una clase de tipo PassWorld (asegúrate de que esta clase exista y esté configurada correctamente)
     public int index1 = 1;  // Comienza en la etapa 1
+    public SpeedTimer timer;
 
     private void Start()
     {
@@ -19,6 +20,15 @@ public class Portal : MonoBehaviour
         {
             enemyManager = FindObjectOfType<EnemyManager>(); // Buscará el EnemyManager en la escena
             if (enemyManager == null)
+            {
+                Debug.LogError("No se encontró un EnemyManager en la escena.");
+            }
+        }
+        // Asignamos automáticamente el EnemyManager si no está asignado en el Inspector
+        if (timer == null)
+        {
+            timer = FindObjectOfType<SpeedTimer>(); // Buscará el EnemyManager en la escena
+            if (timer == null)
             {
                 Debug.LogError("No se encontró un EnemyManager en la escena.");
             }
@@ -41,6 +51,7 @@ public class Portal : MonoBehaviour
         {
             if (passWorld.transportlevel)  // Si transportlevel está activado
             {
+                timer.RestartTimer();
                 index1++;  // Aumentamos el índice para cargar la siguiente escena
                 LoadScene();  // Cargamos la nueva escena según el índice
             }

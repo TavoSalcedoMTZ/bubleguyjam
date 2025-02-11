@@ -45,7 +45,8 @@ public class AtaqueJefe1 : MonoBehaviour
         while (true)
         {
             Debug.Log("Atacando al enemigo");
-         
+            //Esta funcion necesita una variable que lo condicione porque si no el daño lo esta aplicado aunque no este en el cuarto del enemigo
+            //enemigoScript.HacerDano(2);
             yield return new WaitForSeconds(tiempoAtaque);
         }
     }
