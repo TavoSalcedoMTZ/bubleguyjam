@@ -63,7 +63,9 @@ public class Portal : MonoBehaviour
                 if (maskTransition != null)
                 {
                     // Llama a la transición, pasando el cambio de fondo como callback
+                    timer.RestartTimer();
                     StartCoroutine(maskTransition.PerformTransition(() => backgroundManager.ChangeBackground()));
+
                 }
                 else
                 {

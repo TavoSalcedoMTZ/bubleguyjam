@@ -17,6 +17,18 @@ PrefabInstance:
       value: Seeker 4 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5644226683600262645, guid: 7935312228591cc4bbc2c682765d6437, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644226683600262645, guid: 7935312228591cc4bbc2c682765d6437, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644226683600262645, guid: 7935312228591cc4bbc2c682765d6437, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5644226683600262645, guid: 7935312228591cc4bbc2c682765d6437, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.16
       objectReference: {fileID: 0}

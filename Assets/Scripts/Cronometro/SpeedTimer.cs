@@ -14,10 +14,13 @@ public class SpeedTimer : MonoBehaviour
     private float explosionTime = 0.2f;
     public float waitTime = 3.33f;
 
+    private Coroutine bubblesCoroutine; 
+
     private void Start()
     {
-       RestartTimer();
+        RestartTimer();
     }
+
     void Update()
     {
         if (timerRunning)
@@ -59,12 +62,29 @@ public class SpeedTimer : MonoBehaviour
                 originalScript.moveSpeed += 2f;
             }
             Debug.Log("Todos los enemigos derrotados. Nueva velocidad: " + (originalScript != null ? originalScript.moveSpeed.ToString() : "N/A"));
-            StartCoroutine(InflateAndExplodeBubbles());
+
+            // Detenemos la corrutina si estaba corriendo
+            if (bubblesCoroutine != null)
+            {
+                StopCoroutine(bubblesCoroutine);
+                bubblesCoroutine = null;
+            }
+
+            bubblesCoroutine = StartCoroutine(InflateAndExplodeBubbles());
         }
     }
 
     public void RestartTimer()
     {
+        // Detenemos cualquier corrutina anterior
+        if (bubblesCoroutine != null)
+        {
+            StopCoroutine(bubblesCoroutine);
+            bubblesCoroutine = null;
+        }
+
+        StopTimerEarly();
+
         if (!timerRunning)
         {
             currentTime = timerDuration;

@@ -17,6 +17,18 @@ PrefabInstance:
       value: Seeker 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8261561430670049905, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261561430670049905, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261561430670049905, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8261561430670049905, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9221497
       objectReference: {fileID: 0}

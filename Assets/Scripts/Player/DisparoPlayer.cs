@@ -19,6 +19,7 @@ public class DisparoPlayer : MonoBehaviour
         typeshot = false;
         jabonmanage=GetComponent<JabonManage>();
         canShoot = true;
+        playernum = Seleccionador.indexDisparo;
     }
     void Update()
     {

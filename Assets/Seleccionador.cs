@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Seleccionador : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static int indexDisparo = 0; 
+
+    public void setDisparoPlayer(int index)
     {
-        
+       indexDisparo = index;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int getDisparoPlayer()
     {
-        
+        return indexDisparo;
     }
 }

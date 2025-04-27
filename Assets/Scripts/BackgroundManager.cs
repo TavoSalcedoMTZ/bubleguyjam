@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class BackgroundManager : MonoBehaviour
 {
+
     public GameObject[] backgrounds;           // Array de fondos
     public Transform[] spawnPoints;            // Puntos de spawn para el jugador
     public Spawners spawner;
@@ -89,7 +91,7 @@ public class BackgroundManager : MonoBehaviour
         currentBackground.transform.parent = mainCamera.transform;
 
         // Solo spawn de enemigos hasta el sexto fondo
-        if (backgroundCount < 6)
+        if (backgroundCount <= 6)
         {
             spawner.SpawearEnemigos();
         }
@@ -99,7 +101,16 @@ public class BackgroundManager : MonoBehaviour
         // Spawnear el jugador en la nueva posición
         SpawnPlayer(randomIndex);
 
+        StartCoroutine(UpdatePathFinder()); // Actualizar el pathfinder después de cambiar el fondo
+
         backgroundCount++; // Incrementamos el contador de fondos mostrados
+    }
+
+    private IEnumerator UpdatePathFinder()
+    {
+        // Esperar un tiempo antes de actualizar el pathfinder
+        yield return new WaitForSeconds(0.5f);
+        AstarPath.active.Scan(); // Escanear el mapa de navegación
     }
 
     private void SpawnPlayer(int backgroundIndex)
@@ -110,7 +121,7 @@ public class BackgroundManager : MonoBehaviour
             return;
         }
 
-        GameObject player = GameObject.FindWithTag("Player");
+        GameObject player = GameObject.FindWithTag("Target");
         if (player != null)
         {
             Vector3 spawnPosition = spawnPoints[backgroundIndex].position;
@@ -154,4 +165,6 @@ public class BackgroundManager : MonoBehaviour
 
         isTransitioning = false;  // Transición completada
     }
+
+
 }
