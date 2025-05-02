@@ -13,12 +13,18 @@ public class AtaqueJefe1 : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        DetenerAtaque();
+        if (collision.collider.CompareTag("Target"))
+        {
+            DetenerAtaque();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        IniciarAtaque();
+        if (collision.collider.CompareTag("Target"))
+        {
+            IniciarAtaque();
+        }
     }
 
     public void IniciarAtaque()
