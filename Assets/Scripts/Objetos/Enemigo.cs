@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Enemigo : MonoBehaviour
@@ -10,16 +11,28 @@ public class Enemigo : MonoBehaviour
 
     void Start()
     {
-        // Intentar obtener la referencia al EnemyManager en la escena
+        if (jabonManage == null)
+        {
+            jabonManage = FindFirstObjectByType<JabonManage>();
+        }
         if (enemymanager == null)
         {
-            enemymanager = FindObjectOfType<EnemyManager>(); // Busca el primer EnemyManager en la escena
+            enemymanager = FindFirstObjectByType<EnemyManager>(); // Busca el primer EnemyManager en la escena
         }
+
     }
 
-   public void HacerDano(int _daño)
+    public void HacerDano(int _dano)
     {
-        jabonManage.JabonDicrese(_daño);
+        Debug.Log("Enemigo hizo daño al jugador");
+        if (jabonManage != null)
+        {
+            jabonManage.JabonDicrese(_dano);
+        }
+        else
+        {
+            Debug.LogWarning("jabonManage no está asignado");
+        }
     }
     void Update()
     {

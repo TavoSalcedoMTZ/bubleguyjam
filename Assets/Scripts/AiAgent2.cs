@@ -13,19 +13,23 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
     private float distanceToTarget;
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private JabonManage jabonManage;
+    private Coroutine ataqueCoroutine;
+    private Enemigo enemigoScript;
 
     private bool isFollowing = false;
 
     // Variable para el EnemyManager
     private EnemyManager enemyManager;
 
-    // Referencia a un script para manejar el daño (esto puede ser cualquier script que maneje la salud o daño)
-    [SerializeField] private JabonManage jabon;
-
     private void Start()
     {
         path = GetComponent<AIPath>();
+        if (jabonManage == null)
+        {
+            jabonManage = FindFirstObjectByType<JabonManage>();
+        }
         path.canMove = false; // Al inicio el agente no debería moverse hasta que entre en el área de activación
+        enemigoScript = GetComponent<Enemigo>();
     }
 
     private void Update()
@@ -52,6 +56,20 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
         enemyManager = manager; // Asigna el EnemyManager
     }
 
+    private IEnumerator AtaqueCoroutine()
+    {
+        while (true)
+        {
+            if (Vector2.Distance(transform.position, target.position) < stopDistanceThreshold)
+            {
+                enemigoScript.HacerDano(1);
+            }
+
+            yield return new WaitForSeconds(2f); // Ataca cada segundo
+        }
+    }
+
+
     public void Seguimiento1()
     {
         path.maxSpeed = moveSpeed;
@@ -69,24 +87,40 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Target")) // Asegúrate de que el tag "Target" esté asignado al objetivo
+        if (other.CompareTag("Target"))
         {
-            path.canMove = true; // El agente puede comenzar a moverse
-            isFollowing = true; // El agente comienza a seguir
+            path.canMove = true;
+            isFollowing = true;
+
+            if (ataqueCoroutine == null)
+            {
+                ataqueCoroutine = StartCoroutine(AtaqueCoroutine());
+            }
         }
     }
-
-
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Target"))
         {
-            path.canMove = false; // El agente deja de moverse cuando sale del área de activación
-            isFollowing = false; // Deja de seguir al objetivo
+            path.canMove = false;
+            isFollowing = false;
+
+            if (ataqueCoroutine != null)
+            {
+                StopCoroutine(ataqueCoroutine);
+                ataqueCoroutine = null;
+            }
         }
     }
 
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            HacerDano(1); 
+        }
+    }
+    */
 
-    
 }

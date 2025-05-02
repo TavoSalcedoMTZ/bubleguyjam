@@ -15,7 +15,7 @@ public class AiAgent3 : MonoBehaviour, IEnemigo
 
     [SerializeField] private float stopDistanceThreshold;
     private float distanceToTarget;
-
+    private Enemigo enemigoScript;
     private bool isFollowing = false;
     private bool movingBetweenPositions = true;
 
@@ -26,6 +26,7 @@ public class AiAgent3 : MonoBehaviour, IEnemigo
         path = GetComponent<AIPath>();
         path.destination = posicion1.position;  // Inicia en la primera posición
         path.canMove = true;
+        enemigoScript = GetComponent<Enemigo>();
     }
 
     private void Update()
@@ -103,5 +104,13 @@ public class AiAgent3 : MonoBehaviour, IEnemigo
     public void SetEnemyManager(EnemyManager manager)
     {
         enemyManager = manager; // Asignar el EnemyManager
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            enemigoScript.HacerDano(1);
+        }
     }
 }

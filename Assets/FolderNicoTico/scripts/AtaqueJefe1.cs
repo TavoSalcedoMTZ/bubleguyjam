@@ -3,15 +3,13 @@ using UnityEngine;
 
 public class AtaqueJefe1 : MonoBehaviour
 {
-    private Enemigo enemigoScript;
-    private float tiempoAtaque;
+    [Header("Referencias")]
+    public Enemigo enemigoScript;
     private Coroutine rutinaAtaque;
 
-    public void Inicializar(Enemigo enemigoScript, float tiempoAtaque)
-    {
-        this.enemigoScript = enemigoScript;
-        this.tiempoAtaque = tiempoAtaque;
-    }
+    [Header("Variables")]
+    [SerializeField, Range(0, 5)] private float tiempoAtaque;
+    [Range(0, 10)]public int Dano;
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -46,7 +44,7 @@ public class AtaqueJefe1 : MonoBehaviour
         {
             Debug.Log("Atacando al enemigo");
             //Esta funcion necesita una variable que lo condicione porque si no el daño lo esta aplicado aunque no este en el cuarto del enemigo
-            //enemigoScript.HacerDano(2);
+            enemigoScript.HacerDano(Dano);
             yield return new WaitForSeconds(tiempoAtaque);
         }
     }

@@ -15839,9 +15839,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2c1646e47da7843b4d5759d7830f5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Jabon: 100
+  Jabon: 250
   playerTransf: {fileID: 681647157}
-  maxJabon: 100
+  maxJabon: 250
   burbujasOriginales:
   - {fileID: 8688135560918664871, guid: f40e6b6b8b591d7489061e6bdb743f28, type: 3}
   - {fileID: 5761258259120587953, guid: ebf98b8f31da04f4bae3e60e98d6b59d, type: 3}
@@ -18801,6 +18801,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 4092804622181624802, guid: 0511ce6ac5fc5874a81c8484e536ea0d, type: 3}
+      propertyPath: Dano
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092804622181624802, guid: 0511ce6ac5fc5874a81c8484e536ea0d, type: 3}
+      propertyPath: tiempoAtaque
+      value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4092804622181624802, guid: 0511ce6ac5fc5874a81c8484e536ea0d, type: 3}
+      propertyPath: enemigoScript
+      value: 
+      objectReference: {fileID: 777149434}
     - target: {fileID: 7075689614980334981, guid: 0511ce6ac5fc5874a81c8484e536ea0d, type: 3}
       propertyPath: target
       value: 
@@ -18823,7 +18835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8200233876821449243, guid: 0511ce6ac5fc5874a81c8484e536ea0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8200233876821449243, guid: 0511ce6ac5fc5874a81c8484e536ea0d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -45266,7 +45278,7 @@ Transform:
   m_GameObject: {fileID: 1944635074}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.89, y: 3.73, z: -0.03079983}
+  m_LocalPosition: {x: -6.89, y: 2.67, z: -0.03079983}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

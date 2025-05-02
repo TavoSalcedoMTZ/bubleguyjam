@@ -14,11 +14,13 @@ public class AiAgent : MonoBehaviour, IEnemigo
     private float distanceToTarget;
     private bool siguiendo;
     private Coroutine ataqueCoroutine; // Referencia a la rutina de ataque
+    private Enemigo enemigoScript;
 
     private void Start()
     {
         path = GetComponent<AIPath>();
         siguiendo = true; // Iniciamos en modo seguimiento
+        enemigoScript = GetComponent<Enemigo>();
     }
 
     private void Update()
@@ -55,9 +57,11 @@ public class AiAgent : MonoBehaviour, IEnemigo
     {
         while (!siguiendo)
         {
-            yield return new WaitForSeconds(1f); // Esperamos un segundo antes de atacar de nuevo
+            enemigoScript.HacerDano(1); 
+            yield return new WaitForSeconds(2f); // Espera un segundo antes del siguiente ataque
         }
     }
+
 
     // Detener el seguimiento y empezar el ataque
     private void DetenerSeguimiento()
@@ -109,4 +113,13 @@ public class AiAgent : MonoBehaviour, IEnemigo
             path.destination = transform.position; // Dejamos de movernos cuando atacamos
         }
     }
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            HacerDano(1);
+        }
+    }
+    */
 }
