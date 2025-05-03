@@ -139,10 +139,7 @@ public class BackgroundManager : MonoBehaviour
     {
         if (predefinedEnemy != null && newTransformPosition != null)
         {
-            // Cambiar la posición o transform del enemigo predefinido
             predefinedEnemy.transform.position = newTransformPosition.position;
-            predefinedEnemy.transform.rotation = newTransformPosition.rotation;
-            predefinedEnemy.transform.localScale = newTransformPosition.localScale;
         }
         else
         {

@@ -1,59 +1,51 @@
 using UnityEngine;
 using Pathfinding;
 
-[RequireComponent(typeof(Seeker))]
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(AIPath))]
 public class Jefe1 : MonoBehaviour
 {
     public Transform target;
-    public float speed = 200f;
-    public float nextWaypointDistance = 0.5f;
+    public float moveSpeed = 3f;
+    public float stopDistanceThreshold = 1f;
 
-    private Seeker seeker;
-    private Rigidbody2D rb;
-
-    private Path path;
-    private int currentWaypoint = 0;
-    private bool reachedEndOfPath = false;
+    private AIPath aiPath;
+    private bool siguiendo = true;
 
     void Start()
     {
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
-
-        InvokeRepeating(nameof(UpdatePath), 0f, 0.5f); // recalcula cada medio segundo
+        aiPath = GetComponent<AIPath>();
+        aiPath.maxSpeed = moveSpeed;
+        aiPath.canMove = true;
     }
 
-    void UpdatePath()
+    void Update()
     {
-        if (target == null || !seeker.IsDone()) return;
+        if (target == null) return;
 
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
-    }
+        float distance = Vector2.Distance(transform.position, target.position);
 
-    void OnPathComplete(Path p)
-    {
-        if (!p.error)
+        if (siguiendo && distance < stopDistanceThreshold)
         {
-            path = p;
-            currentWaypoint = 0;
+            DetenerSeguimiento();
         }
+        else if (!siguiendo && distance >= stopDistanceThreshold)
+        {
+            ReiniciarSeguimiento();
+        }
+
+        aiPath.destination = siguiendo ? target.position : transform.position;
     }
 
-    void FixedUpdate()
+    private void DetenerSeguimiento()
     {
-        if (path == null || currentWaypoint >= path.vectorPath.Count) return;
+        siguiendo = false;
+        aiPath.canMove = false;
+    }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.fixedDeltaTime;
-
-        rb.MovePosition(rb.position + force);
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
+    private void ReiniciarSeguimiento()
+    {
+        siguiendo = true;
+        aiPath.canMove = true;
     }
 
     public void SetTarget(Transform newTarget)

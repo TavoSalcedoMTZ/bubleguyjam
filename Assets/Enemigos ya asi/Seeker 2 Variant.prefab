@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: Vida
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1582396052293156250, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
+      propertyPath: stopDistanceThreshold
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3084105301308466028, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
       propertyPath: m_Name
       value: Seeker 2 Variant

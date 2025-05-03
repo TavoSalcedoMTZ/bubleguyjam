@@ -11,22 +11,21 @@ public class AtaqueJefe1 : MonoBehaviour
     [SerializeField, Range(0, 5)] private float tiempoAtaque;
     [Range(0, 10)]public int Dano;
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Target"))
-        {
-            DetenerAtaque();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Target"))
+        if (collision.CompareTag("Target"))
         {
             IniciarAtaque();
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Target"))
+        {
+            DetenerAtaque();
+        }
+    }
     public void IniciarAtaque()
     {
         if (enemigoScript != null && rutinaAtaque == null)
