@@ -21,19 +21,14 @@ public class Jefe1 : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        // Recalcular ruta cada 0.5 segundos
-        InvokeRepeating(nameof(UpdatePath), 0f, 0.5f);
+        InvokeRepeating(nameof(UpdatePath), 0f, 0.5f); // recalcula cada medio segundo
     }
 
     void UpdatePath()
     {
-        if (target == null) return;
+        if (target == null || !seeker.IsDone()) return;
 
-        // Solo pide una nueva ruta si no hay otra calculándose
-        if (seeker.IsDone())
-        {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
-        }
+        seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 
     void OnPathComplete(Path p)
@@ -47,29 +42,14 @@ public class Jefe1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (path == null) return;
+        if (path == null || currentWaypoint >= path.vectorPath.Count) return;
 
-        if (currentWaypoint >= path.vectorPath.Count)
-        {
-            reachedEndOfPath = true;
-            return;
-        }
-        else
-        {
-            reachedEndOfPath = false;
-        }
-
-        // Dirección hacia el siguiente waypoint
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.fixedDeltaTime;
 
-        // Movimiento
         rb.MovePosition(rb.position + force);
 
-        // Distancia al siguiente waypoint
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        // Avanzar al siguiente waypoint si ya llegamos al actual
         if (distance < nextWaypointDistance)
         {
             currentWaypoint++;

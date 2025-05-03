@@ -1,49 +1,59 @@
 using UnityEngine;
 using Pathfinding;
-using static Spawners;
 using System.Collections;
+using static Spawners;
 
 public class AiAgent : MonoBehaviour, IEnemigo
 {
     private AIPath path;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private Transform target;
     [SerializeField] private EnemyManager enemyManager;
-    [SerializeField] private float stopDistanceThreshold; // Umbral de distancia para detener el seguimiento
-    [SerializeField] private JabonManage jabonManage; // Para gestionar la lógica de ataque
+    [SerializeField] private float stopDistanceThreshold = 1f;
+    [SerializeField] private JabonManage jabonManage;
+
     private float distanceToTarget;
-    private bool siguiendo;
-    private Coroutine ataqueCoroutine; // Referencia a la rutina de ataque
+    private bool siguiendo = true;
+    private Coroutine ataqueCoroutine;
     private Enemigo enemigoScript;
 
     private void Start()
     {
         path = GetComponent<AIPath>();
-        siguiendo = true; // Iniciamos en modo seguimiento
         enemigoScript = GetComponent<Enemigo>();
+
+        if (path != null)
+        {
+            path.maxSpeed = moveSpeed;
+        }
     }
 
     private void Update()
     {
-        // Verificamos si estamos siguiendo al objetivo
-        Seguimiento1();
+        if (target == null || path == null) return;
 
-        // Comprobamos la distancia para decidir si seguimos o atacamos
         distanceToTarget = Vector2.Distance(transform.position, target.position);
 
         if (siguiendo && distanceToTarget < stopDistanceThreshold)
         {
-            // Si estamos en el rango de detener el seguimiento
             DetenerSeguimiento();
         }
         else if (!siguiendo && distanceToTarget >= stopDistanceThreshold)
         {
-            // Si no estamos siguiendo y la distancia es mayor al umbral, reanudar el seguimiento
             ReiniciarSeguimiento();
         }
+
+        ActualizarDestino();
     }
 
-    // Método para iniciar el ataque
+    private void ActualizarDestino()
+    {
+        if (path == null) return;
+
+        path.maxSpeed = siguiendo ? moveSpeed : 0f;
+        path.destination = siguiendo ? target.position : transform.position;
+    }
+
     private void IniciarAtaque()
     {
         if (ataqueCoroutine == null)
@@ -52,74 +62,46 @@ public class AiAgent : MonoBehaviour, IEnemigo
         }
     }
 
-    // Método que se ejecuta en un intervalo para simular el ataque
     private IEnumerator AtaqueCoroutine()
     {
         while (!siguiendo)
         {
-            enemigoScript.HacerDano(1); 
-            yield return new WaitForSeconds(2f); // Espera un segundo antes del siguiente ataque
+            enemigoScript.HacerDano(1);
+            yield return new WaitForSeconds(2f);
         }
     }
 
-
-    // Detener el seguimiento y empezar el ataque
     private void DetenerSeguimiento()
     {
-        siguiendo = false; // Dejamos de seguir
-        path.maxSpeed = 0; // Detenemos el movimiento
-        IniciarAtaque(); // Comenzamos el ataque
+        siguiendo = false;
+        path.maxSpeed = 0f;
+        IniciarAtaque();
     }
 
-    // Reiniciar el seguimiento si la distancia vuelve a ser mayor al umbral
     private void ReiniciarSeguimiento()
     {
-        siguiendo = true; // Volvemos a seguir
-        path.maxSpeed = moveSpeed; // Restauramos la velocidad de movimiento
+        siguiendo = true;
+        path.maxSpeed = moveSpeed;
+
         if (ataqueCoroutine != null)
         {
-            StopCoroutine(ataqueCoroutine); // Detenemos el ataque
+            StopCoroutine(ataqueCoroutine);
             ataqueCoroutine = null;
         }
     }
 
-    // Método que actualiza el destino del agente
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
     }
 
-    // Implementación de SetEnemyManager que es parte de la interfaz IEnemigo
     public void SetEnemyManager(EnemyManager manager)
     {
-        enemyManager = manager; // Asigna el EnemyManager
+        enemyManager = manager;
     }
 
     public void SetJabonManage(JabonManage jabon)
     {
         jabonManage = jabon;
     }
-
-    // Método para seguir al objetivo
-    public void Seguimiento1()
-    {
-        path.maxSpeed = moveSpeed;
-        if (siguiendo)
-        {
-            path.destination = target.position; // Continuamos siguiendo el objetivo
-        }
-        else
-        {
-            path.destination = transform.position; // Dejamos de movernos cuando atacamos
-        }
-    }
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Target"))
-        {
-            HacerDano(1);
-        }
-    }
-    */
 }
