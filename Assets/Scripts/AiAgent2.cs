@@ -58,14 +58,11 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
 
     private IEnumerator AtaqueCoroutine()
     {
+        yield return new WaitForSeconds(0.5f);
         while (true)
         {
-            if (Vector2.Distance(transform.position, target.position) < stopDistanceThreshold)
-            {
-                enemigoScript.HacerDano(1);
-            }
-
-            yield return new WaitForSeconds(2f); // Ataca cada segundo
+            enemigoScript.HacerDano(1);
+            yield return new WaitForSeconds(2f);
         }
     }
 
@@ -91,11 +88,6 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
         {
             path.canMove = true;
             isFollowing = true;
-
-            if (ataqueCoroutine == null)
-            {
-                ataqueCoroutine = StartCoroutine(AtaqueCoroutine());
-            }
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -104,7 +96,25 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
         {
             path.canMove = false;
             isFollowing = false;
+        }
+    }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            if (ataqueCoroutine == null)
+            {
+                ataqueCoroutine = StartCoroutine(AtaqueCoroutine());
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
             if (ataqueCoroutine != null)
             {
                 StopCoroutine(ataqueCoroutine);
@@ -113,14 +123,5 @@ public class AiAgent2 : MonoBehaviour, IEnemigo
         }
     }
 
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Target"))
-        {
-            HacerDano(1); 
-        }
-    }
-    */
 
 }

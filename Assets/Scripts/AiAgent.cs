@@ -9,11 +9,8 @@ public class AiAgent : MonoBehaviour, IEnemigo
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private Transform target;
     [SerializeField] private EnemyManager enemyManager;
-    [SerializeField] private float stopDistanceThreshold = 1f;
     [SerializeField] private JabonManage jabonManage;
 
-    private float distanceToTarget;
-    private bool siguiendo = true;
     private Coroutine ataqueCoroutine;
     private Enemigo enemigoScript;
 
@@ -32,26 +29,8 @@ public class AiAgent : MonoBehaviour, IEnemigo
     {
         if (target == null || path == null) return;
 
-        distanceToTarget = Vector2.Distance(transform.position, target.position);
-
-        if (siguiendo && distanceToTarget < stopDistanceThreshold)
-        {
-            DetenerSeguimiento();
-        }
-        else if (!siguiendo && distanceToTarget >= stopDistanceThreshold)
-        {
-            ReiniciarSeguimiento();
-        }
-
-        ActualizarDestino();
-    }
-
-    private void ActualizarDestino()
-    {
-        if (path == null) return;
-
-        path.maxSpeed = siguiendo ? moveSpeed : 0f;
-        path.destination = siguiendo ? target.position : transform.position;
+        // El enemigo siempre sigue al jugador
+        path.destination = target.position;
     }
 
     private void IniciarAtaque()
@@ -62,31 +41,39 @@ public class AiAgent : MonoBehaviour, IEnemigo
         }
     }
 
+    private void DetenerAtaque()
+    {
+        if (ataqueCoroutine != null)
+        {
+            StopCoroutine(ataqueCoroutine);
+            ataqueCoroutine = null;
+        }
+    }
+
     private IEnumerator AtaqueCoroutine()
     {
-        while (!siguiendo)
+        while (true)
         {
             enemigoScript.HacerDano(1);
             yield return new WaitForSeconds(2f);
         }
     }
 
-    private void DetenerSeguimiento()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        siguiendo = false;
-        path.maxSpeed = 0f;
-        IniciarAtaque();
+        if (other.transform == target)
+        {
+            path.maxSpeed = 0f;
+            IniciarAtaque();
+        }
     }
 
-    private void ReiniciarSeguimiento()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        siguiendo = true;
-        path.maxSpeed = moveSpeed;
-
-        if (ataqueCoroutine != null)
+        if (other.transform == target)
         {
-            StopCoroutine(ataqueCoroutine);
-            ataqueCoroutine = null;
+            path.maxSpeed = moveSpeed;
+            DetenerAtaque();
         }
     }
 
