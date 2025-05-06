@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private Animator playerAnimator;
+    public float slideFriction;
+    private Vector2 currentVelocity;  
 
     void Start()
     {
@@ -52,9 +54,20 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Mover el personaje de acuerdo al vector de movimiento
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (movement != Vector2.zero)
+        {
+          
+            currentVelocity = Vector2.Lerp(currentVelocity, movement * moveSpeed, Time.fixedDeltaTime * 5f);
+        }
+        else
+        {
+          
+            currentVelocity *= slideFriction;
+        }
+
+        rb.MovePosition(rb.position + currentVelocity * Time.fixedDeltaTime);
     }
+
 
 
 }

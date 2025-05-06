@@ -19,6 +19,7 @@ public class JabonManage : MonoBehaviour
 
     // Referencia a la imagen de tipo Filled (filler)
     public Image jabonFiller;
+    public PanelDaño panelDaño; // Referencia al panel de daño
 
     void Start()
     {
@@ -70,11 +71,13 @@ public class JabonManage : MonoBehaviour
 
     public void JabonDicrese(int _cantidadjabon)
     {
-        // Reduce la cantidad de jabón
+      
         Jabon -= _cantidadjabon;
-        Jabon = Mathf.Max(Jabon, 0); // Asegura que no sea menor a 0
+        Jabon = Mathf.Max(Jabon, 0);
 
-        UpdateScales(); // Actualiza las escalas
+        UpdateScales();
+       panelDaño.MostrarDaño();
+
     }
 
     public void JabonIncremense(int _cantidadjabon)

@@ -68,9 +68,13 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 3678926996230831390, guid: bc96e241370fade459694fe8b66f0525, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a1e0d146822cc4b44ae42e2e1d10c3b6, type: 2}
     - target: {fileID: 4619121870760432617, guid: bc96e241370fade459694fe8b66f0525, type: 3}
       propertyPath: stopDistanceThreshold
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6677628324388736940, guid: bc96e241370fade459694fe8b66f0525, type: 3}
       propertyPath: m_Name

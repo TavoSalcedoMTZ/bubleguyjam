@@ -1,19 +1,44 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObstaculeDamage : MonoBehaviour
 {
+    public UnityEvent obstaculoColission;
+    public bool isDamaged = false;
+    private bool coroutineRunning = false;
 
-     public int damage; 
-    void Start()
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            isDamaged = true;
+
+            if (!coroutineRunning)
+            {
+                StartCoroutine(DañoConstante());
+            }
+        }
     }
 
-
-    void Update()
+    public void OnCollisionExit2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            isDamaged = false;
+        }
+    }
+
+    IEnumerator DañoConstante()
+    {
+        coroutineRunning = true;
+
+        while (isDamaged)
+        {
+            obstaculoColission.Invoke();
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        coroutineRunning = false;
     }
 }

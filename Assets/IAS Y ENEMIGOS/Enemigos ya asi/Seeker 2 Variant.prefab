@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: Vida
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -699320264063561204, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a1e0d146822cc4b44ae42e2e1d10c3b6, type: 2}
     - target: {fileID: 1582396052293156250, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
       propertyPath: stopDistanceThreshold
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3084105301308466028, guid: c6a72ba83f6fd0241956f2bb13c1f47b, type: 3}
       propertyPath: m_Name

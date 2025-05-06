@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: Vida
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -3812575090328031095, guid: 7935312228591cc4bbc2c682765d6437, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a1e0d146822cc4b44ae42e2e1d10c3b6, type: 2}
     - target: {fileID: 4444740907117090833, guid: 7935312228591cc4bbc2c682765d6437, type: 3}
       propertyPath: m_Name
       value: Seeker 4 Variant
