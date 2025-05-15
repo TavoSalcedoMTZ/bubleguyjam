@@ -4,16 +4,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float rotationSpeed = 180f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Vector2 movement;
-    private Animator playerAnimator;
+    public Animator playerAnimator;
     public float slideFriction;
     private Vector2 currentVelocity;  
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        playerAnimator = GetComponent<Animator>();
+  
     }
 
     void Update()

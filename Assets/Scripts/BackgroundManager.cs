@@ -5,7 +5,6 @@ using Pathfinding;
 
 public class BackgroundManager : MonoBehaviour
 {
-
     public GameObject[] backgrounds;           // Array de fondos
     public Transform[] spawnPoints;            // Puntos de spawn para el jugador
     public Spawners spawner;
@@ -16,57 +15,63 @@ public class BackgroundManager : MonoBehaviour
     private int maxBackgroundsToShow = 7;      // Máximo número de fondos que se pueden mostrar
     private int backgroundCount = 0;           // Contador para los fondos mostrados
     private bool isTransitioning = false;      // Bandera para verificar si una transición está en curso
+    public GameObject BordesDelMapa;
 
     [SerializeField] public MaskTransition maskTransition; // Referencia al script de transición
 
-    // Enemigo predefinido para cambiar su transform
     public GameObject predefinedEnemy;         // El enemigo que se transformará en el séptimo fondo
     public Transform newTransformPosition;     // Nueva posición o transformación para el enemigo
 
     private void Start()
     {
-        // Validar fondos y puntos de spawn
-        if (backgrounds == null || backgrounds.Length == 0 || spawnPoints == null || spawnPoints.Length != backgrounds.Length)
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        // Reiniciar estado
+        usedBackgrounds.Clear();
+        BordesDelMapa.SetActive(true); // Desactivar bordes del mapa
+        backgroundCount = 0;
+        isTransitioning = false;
+
+        if (currentBackground != null)
         {
-            Debug.LogError("Faltan fondos o puntos de spawn. Asegúrate de asignar todos los fondos y puntos de spawn en el Inspector.");
-            return;
+            Destroy(currentBackground);
+            currentBackground = null;
         }
 
         mainCamera = Camera.main;
+
         if (mainCamera == null)
         {
             Debug.LogError("No se encontró ninguna cámara principal etiquetada como 'MainCamera'.");
             return;
         }
 
+        // Iniciar la lógica como si fuera Start()
         StartCoroutine(ChangeBackgroundWithTransition());
     }
 
     public IEnumerator ChangeBackgroundWithTransition()
     {
-        // Ejecuta la transición antes de cambiar el fondo
         yield return maskTransition.PerformTransition(ChangeBackground);
     }
 
     public void ChangeBackground()
     {
-        // Evitar la creación de más fondos si ya se han mostrado los 7 fondos permitidos
         if (usedBackgrounds.Count >= maxBackgroundsToShow)
         {
             Debug.Log("Ya se han mostrado los 7 fondos permitidos.");
-
-            // Cambiar el transform del enemigo predefinido en lugar de spawnear enemigos
             ChangeEnemyTransform();
-            return;  // Termina la ejecución para evitar seguir creando fondos o enemigos
+            return;
         }
 
-        // Destruir el fondo actual si existe
         if (currentBackground != null)
         {
             Destroy(currentBackground);
         }
 
-        // Elegir un fondo aleatorio que no haya sido usado
         int randomIndex;
         do
         {
@@ -75,42 +80,35 @@ public class BackgroundManager : MonoBehaviour
 
         usedBackgrounds.Add(randomIndex);
 
-        // Seleccionar el fondo y verificar que no sea nulo
         GameObject selectedBackground = backgrounds[randomIndex];
 
         if (selectedBackground == null)
         {
-            Debug.LogError($"El fondo en el índice {randomIndex} es nulo. Verifica tu array de backgrounds.");
+            Debug.LogError($"El fondo en el índice {randomIndex} es nulo.");
             return;
         }
 
-        // Instanciar el fondo en la posición correcta
         Vector3 backgroundPosition = mainCamera.transform.position;
-        backgroundPosition.z = 100f; // Posicionar el fondo detrás de la cámara
+        backgroundPosition.z = 100f;
         currentBackground = Instantiate(selectedBackground, backgroundPosition, Quaternion.identity);
         currentBackground.transform.parent = mainCamera.transform;
 
-        // Solo spawn de enemigos hasta el sexto fondo
         if (backgroundCount <= 6)
         {
             spawner.SpawearEnemigos();
         }
 
         Debug.Log($"Fondo cambiado al fondo {randomIndex + 1}");
-
-        // Spawnear el jugador en la nueva posición
         SpawnPlayer(randomIndex);
+        StartCoroutine(UpdatePathFinder());
 
-        StartCoroutine(UpdatePathFinder()); // Actualizar el pathfinder después de cambiar el fondo
-
-        backgroundCount++; // Incrementamos el contador de fondos mostrados
+        backgroundCount++;
     }
 
     private IEnumerator UpdatePathFinder()
     {
-        // Esperar un tiempo antes de actualizar el pathfinder
         yield return new WaitForSeconds(0.5f);
-        AstarPath.active.Scan(); // Escanear el mapa de navegación
+        AstarPath.active.Scan();
     }
 
     private void SpawnPlayer(int backgroundIndex)
@@ -134,7 +132,6 @@ public class BackgroundManager : MonoBehaviour
         }
     }
 
-    // Método para cambiar la posición de un enemigo predefinido cuando se llega al séptimo fondo
     private void ChangeEnemyTransform()
     {
         if (predefinedEnemy != null && newTransformPosition != null)
@@ -149,19 +146,14 @@ public class BackgroundManager : MonoBehaviour
 
     public IEnumerator ChangeBackgroundWithFade()
     {
-        // Evitar que se inicie una nueva transición si ya hay una en curso
         if (isTransitioning) yield break;
 
         isTransitioning = true;
 
-        // Llamar a PerformTransition para manejar fade in, cambiar el fondo, y luego fade out
         yield return StartCoroutine(maskTransition.PerformTransition(() => {
-            // Este código se ejecuta después del fade in
-            ChangeBackground(); // Cambiar el fondo después del fade in
+            ChangeBackground();
         }));
 
-        isTransitioning = false;  // Transición completada
+        isTransitioning = false;
     }
-
-
 }

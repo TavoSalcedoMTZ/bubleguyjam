@@ -27,7 +27,7 @@ public class Enemigo : MonoBehaviour
         Debug.Log("Enemigo hizo daño al jugador");
         if (jabonManage != null)
         {
-            jabonManage.JabonDicrese(_dano);
+            jabonManage.JabonDicrese(_dano, false);
         }
         else
         {

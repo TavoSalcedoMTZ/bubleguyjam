@@ -56,7 +56,7 @@ public class DisparoPlayer : MonoBehaviour
 
     void DisparoBasico()
     {
-        jabonmanage.JabonDicrese(1);
+        jabonmanage.JabonDicrese(1,true);
         GameObject proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, puntoDisparo.rotation);
 
 
@@ -78,7 +78,7 @@ public class DisparoPlayer : MonoBehaviour
         }
         else if (typeshot){
 
-            jabonmanage.JabonDicrese(3);
+            jabonmanage.JabonDicrese(3, true);
 
    
             GameObject proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, puntoDisparo.rotation);
@@ -114,7 +114,7 @@ public class DisparoPlayer : MonoBehaviour
         else if (typeshot)
         {
 
-            jabonmanage.JabonDicrese(5);
+            jabonmanage.JabonDicrese(5, true);
 
 
             GameObject proyectil = Instantiate(proyectilPrefab, puntoDisparo.position, puntoDisparo.rotation);
@@ -158,7 +158,7 @@ public class DisparoPlayer : MonoBehaviour
         }
         else if (typeshot)
         {
-            jabonmanage.JabonDicrese(3);
+            jabonmanage.JabonDicrese(3, true);
             GameObject proyectil = Instantiate(proyectilExplosivoPrefab, puntoDisparo.position, puntoDisparo.rotation);
 
 

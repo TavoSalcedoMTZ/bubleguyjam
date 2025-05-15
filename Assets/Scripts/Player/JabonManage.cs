@@ -69,15 +69,22 @@ public class JabonManage : MonoBehaviour
         }
     }
 
-    public void JabonDicrese(int _cantidadjabon)
+    public void JabonDicrese(int _cantidadjabon, bool? isPlayerAttack = null)
     {
-      
         Jabon -= _cantidadjabon;
         Jabon = Mathf.Max(Jabon, 0);
 
         UpdateScales();
-       panelDaño.MostrarDaño();
 
+       
+        if (isPlayerAttack != true)
+        {
+            panelDaño.MostrarDaño();
+        }
+    }
+    public void DañoObstaculos(int daño)
+    {
+        JabonDicrese(daño, false);   
     }
 
     public void JabonIncremense(int _cantidadjabon)
