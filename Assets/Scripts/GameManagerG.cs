@@ -6,6 +6,7 @@ public class GameManagerG : MonoBehaviour
 
     [SerializeField]
     private int World;
+    public bool BatallaJefe = false;
 
     public BackgroundManager[] backgroundManagers;
 
@@ -52,26 +53,22 @@ public class GameManagerG : MonoBehaviour
     }
     public void NextWorld()
     {
- 
         if (World >= 0 && World < backgroundManagers.Length)
         {
+            Debug.Log("Desactivando mundo: " + World);
             backgroundManagers[World].gameObject.SetActive(false);
             backgroundManagers[World].Limpiar();
         }
 
-     
         World++;
 
-  
         if (World >= backgroundManagers.Length)
         {
             World = 0;
         }
 
-     
+        Debug.Log("Activando mundo: " + World);
         backgroundManagers[World].gameObject.SetActive(true);
-
-   
         backgroundManagers[World].Initialize();
     }
 }

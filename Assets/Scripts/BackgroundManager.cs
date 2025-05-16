@@ -21,6 +21,9 @@ public class BackgroundManager : MonoBehaviour
 
     public GameObject predefinedEnemy;         // El enemigo que se transformará en el séptimo fondo
     public Transform newTransformPosition;     // Nueva posición o transformación para el enemigo
+    public EnemyManager enemyManager;         // Referencia al EnemyManager
+
+
 
     private void Start()
     {
@@ -30,6 +33,8 @@ public class BackgroundManager : MonoBehaviour
     public void Initialize()
     {
         // Reiniciar estado
+        enemyManager=FindFirstObjectByType<EnemyManager>();
+
         usedBackgrounds.Clear();
         BordesDelMapa.SetActive(true); // Desactivar bordes del mapa
         backgroundCount = 0;
@@ -150,6 +155,9 @@ public class BackgroundManager : MonoBehaviour
         if (predefinedEnemy != null && newTransformPosition != null)
         {
             predefinedEnemy.transform.position = newTransformPosition.position;
+
+            enemyManager.totalEnemiesAlive++;
+
         }
         else
         {

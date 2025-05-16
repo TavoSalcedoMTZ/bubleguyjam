@@ -45,6 +45,8 @@ public class Portal : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Target") && portalActivated) // Verifica si es el jugador y que el portal no haya sido activado ya
