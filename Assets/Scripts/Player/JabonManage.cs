@@ -101,11 +101,11 @@ public class JabonManage : MonoBehaviour
     {
         float scaleFactor = Mathf.InverseLerp(0, maxJabon, Jabon);
 
-        // Escala mínima del jugador
+       
         Vector3 minScale = initialScale * 0.456f;
         playerRender.transform.localScale = Vector3.Lerp(minScale, initialScale, scaleFactor);
 
-        // Escalar burbujas
+     
         for (int i = 0; i < burbujasEscalables.Count; i++)
         {
             if (burbujasEscalables[i] != null && i < burbujasOriginales.Count && burbujasOriginales[i] != null)
