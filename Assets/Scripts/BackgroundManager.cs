@@ -53,6 +53,19 @@ public class BackgroundManager : MonoBehaviour
         StartCoroutine(ChangeBackgroundWithTransition());
     }
 
+   public void Limpiar()
+    {
+        if (currentBackground != null)
+        {
+            Destroy(currentBackground);
+            currentBackground = null;
+        }
+        usedBackgrounds.Clear();
+        backgroundCount = 0;
+        isTransitioning = false;
+            BordesDelMapa.SetActive(false);
+        
+    }
     public IEnumerator ChangeBackgroundWithTransition()
     {
         yield return maskTransition.PerformTransition(ChangeBackground);

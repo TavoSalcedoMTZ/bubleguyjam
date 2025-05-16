@@ -8,6 +8,7 @@ public class Jefe1 : MonoBehaviour
     public float moveSpeed = 3f;
     public float stopDistanceThreshold = 1f;
 
+
     private AIPath aiPath;
     private bool siguiendo = true;
 

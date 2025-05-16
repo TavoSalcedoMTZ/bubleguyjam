@@ -49,11 +49,10 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("Target") && portalActivated) // Verifica si es el jugador y que el portal no haya sido activado ya
         {
-            if (passWorld.transportlevel)  // Si transportlevel está activado
+            if (passWorld.PasandoAlSiguienteNivel)  // Si transportlevel está activado
             {
                 timer.RestartTimer();
-                index1++;  // Aumentamos el índice para cargar la siguiente escena
-                LoadScene();  // Cargamos la nueva escena según el índice
+                passWorld.NuevoNivel();
             }
             else
             {

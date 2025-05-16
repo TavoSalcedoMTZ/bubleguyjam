@@ -11,17 +11,16 @@ public class GameManagerG : MonoBehaviour
 
     private void Awake()
     {
-        // Implementación del Singleton
+      
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // Elimina duplicados
+            Destroy(gameObject); 
             return;
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Opcional: si quieres que sobreviva entre escenas
+        DontDestroyOnLoad(gameObject); 
 
-        // Desactiva todos menos el primero
         for (int i = 0; i < backgroundManagers.Length; i++)
         {
             if (i == World)
@@ -39,16 +38,40 @@ public class GameManagerG : MonoBehaviour
     {
         if (index < 0 || index >= backgroundManagers.Length) return;
 
-        // Desactiva todos
+     
         foreach (var manager in backgroundManagers)
         {
             manager.gameObject.SetActive(false);
         }
 
-        // Activa el nuevo
+     
         backgroundManagers[index].gameObject.SetActive(true);
 
-        // Reinicia el manager activado
-        backgroundManagers[index].Initialize(); // Asegúrate de tener esta función en tu clase
+     
+        backgroundManagers[index].Initialize(); 
+    }
+    public void NextWorld()
+    {
+ 
+        if (World >= 0 && World < backgroundManagers.Length)
+        {
+            backgroundManagers[World].gameObject.SetActive(false);
+            backgroundManagers[World].Limpiar();
+        }
+
+     
+        World++;
+
+  
+        if (World >= backgroundManagers.Length)
+        {
+            World = 0;
+        }
+
+     
+        backgroundManagers[World].gameObject.SetActive(true);
+
+   
+        backgroundManagers[World].Initialize();
     }
 }

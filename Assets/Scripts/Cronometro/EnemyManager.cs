@@ -12,18 +12,28 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyDefeated()
     {
-        // Llamado cuando un enemigo es derrotado
         totalEnemiesAlive--;
+
+        if (totalEnemiesAlive < 0)
+        {
+            totalEnemiesAlive = 0;
+        }
+
+        if (totalEnemiesAlive == 0)
+        {
+            stageFree = true;
+        }
     }
 
     public bool AreEnemiesPresent()
     {
-        // Retorna verdadero si aún quedan enemigos vivos
+    
         return totalEnemiesAlive > 0;
     }
 
     private void Update()
     {
+        
         if (totalEnemiesAlive == 0)
         {
             stageFree=true;

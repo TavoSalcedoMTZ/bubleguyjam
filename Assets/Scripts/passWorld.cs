@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class passWorld : MonoBehaviour
 {
+    public bool PasandoAlSiguienteNivel = false;
+    private GameManagerG gameManagerG; // Referencia al GameManagerG
 
-    public Enemigo Enemigo;
-    public bool transportlevel;
-
-    void Start()
+    private void Start()
     {
-       transportlevel = false;
+        gameManagerG=FindFirstObjectByType<GameManagerG>();
     }
-    // Update is called once per frame
-    void Update()
+    public void NuevoNivel()
     {
-        if (Enemigo.Vida == 0)
-        {
-            transportlevel=true;
-        }
-
+        gameManagerG.NextWorld();
+        PasandoAlSiguienteNivel = false; // Reinicia la variable para el siguiente uso
     }
+
 }
     
