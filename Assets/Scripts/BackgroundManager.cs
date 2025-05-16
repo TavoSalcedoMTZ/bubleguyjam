@@ -22,7 +22,7 @@ public class BackgroundManager : MonoBehaviour
     public GameObject predefinedEnemy;         // El enemigo que se transformará en el séptimo fondo
     public Transform newTransformPosition;     // Nueva posición o transformación para el enemigo
     public EnemyManager enemyManager;         // Referencia al EnemyManager
-
+    public GameObject loadingScreen;
 
 
     private void Start()
@@ -125,8 +125,18 @@ public class BackgroundManager : MonoBehaviour
 
     private IEnumerator UpdatePathFinder()
     {
-        yield return new WaitForSeconds(0.5f);
+   
+        loadingScreen.SetActive(true);
+
+     
+        yield return null;
+
         AstarPath.active.Scan();
+
+        yield return null;
+
+    
+        loadingScreen.SetActive(false);
     }
 
     private void SpawnPlayer(int backgroundIndex)

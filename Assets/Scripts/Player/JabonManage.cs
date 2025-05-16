@@ -20,6 +20,7 @@ public class JabonManage : MonoBehaviour
     // Referencia a la imagen de tipo Filled (filler)
     public Image jabonFiller;
     public PanelDaño panelDaño; // Referencia al panel de daño
+    public GameObject playerRender;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class JabonManage : MonoBehaviour
             Debug.Log("Te has quedado sin jabón");
             player.canShoot = false; // Desactiva la capacidad de disparar
             string scene_name = "Game Over";
-            SceneManager.LoadScene(scene_name);
+            SceneManager.LoadSceneAsync(scene_name);
         }
 
         // Actualiza el Filler con el valor del jabón
@@ -98,20 +99,20 @@ public class JabonManage : MonoBehaviour
 
     private void UpdateScales()
     {
-        // Calcula el factor de escala basado en el valor de jabón
         float scaleFactor = Mathf.InverseLerp(0, maxJabon, Jabon);
 
-        // Escala el jugador linealmente
-        playerTransf.localScale = Vector3.Lerp(Vector3.zero, initialScale, scaleFactor);
+        // Escala mínima del jugador
+        Vector3 minScale = initialScale * 0.456f;
+        playerRender.transform.localScale = Vector3.Lerp(minScale, initialScale, scaleFactor);
 
-        // Escala las burbujas escalables en función de las burbujas originales
+        // Escalar burbujas
         for (int i = 0; i < burbujasEscalables.Count; i++)
         {
             if (burbujasEscalables[i] != null && i < burbujasOriginales.Count && burbujasOriginales[i] != null)
             {
-                // Escala cada burbuja escalable basándose en la escala de su burbuja original
                 Vector3 originalScale = burbujasOriginales[i].localScale;
-                burbujasEscalables[i].localScale = Vector3.Lerp(Vector3.zero, originalScale, scaleFactor);
+                Vector3 minBubbleScale = originalScale * 0.456f;
+                burbujasEscalables[i].localScale = Vector3.Lerp(minBubbleScale, originalScale, scaleFactor);
             }
         }
     }
