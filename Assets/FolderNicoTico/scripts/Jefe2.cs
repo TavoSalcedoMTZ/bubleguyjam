@@ -82,21 +82,25 @@ public class Jefe2 : MonoBehaviour
             {
                 Destroy(currentPrefab);
                 currentPrefab = null;
+
             }
         }
     }
+
 
     private IEnumerator GenerarPrefabConProbabilidad()
     {
         while (true)
         {
             yield return new WaitForSeconds(tiempoGenerarPrefab);
-            if (Random.value < probabilidadGenerarPrefab)
+
+            if (currentPrefab == null && Random.value < probabilidadGenerarPrefab)
             {
                 GenerarPrefab();
             }
         }
     }
+
 
     public void GenerarPrefab()
     {
@@ -111,13 +115,27 @@ public class Jefe2 : MonoBehaviour
     {
         Vector2 areaCenter = spawnArea.bounds.center;
         float radius = spawnArea.radius;
+        float minDistanceFromBoss = stopDistanceThreshold + 0.5f;
 
-        float randomAngle = Random.Range(0f, 2f * Mathf.PI);
-        float randomDistance = Random.Range(0f, radius);
+        Vector2 spawnPosition;
 
-        float randomX = areaCenter.x + Mathf.Cos(randomAngle) * randomDistance;
-        float randomY = areaCenter.y + Mathf.Sin(randomAngle) * randomDistance;
+        int intentosMaximos = 10;
+        int intentos = 0;
 
-        return new Vector2(randomX, randomY);
+        do
+        {
+            float randomAngle = Random.Range(0f, 2f * Mathf.PI);
+            float randomDistance = Random.Range(minDistanceFromBoss, radius); 
+
+            float randomX = areaCenter.x + Mathf.Cos(randomAngle) * randomDistance;
+            float randomY = areaCenter.y + Mathf.Sin(randomAngle) * randomDistance;
+
+            spawnPosition = new Vector2(randomX, randomY);
+            intentos++;
+        }
+        while (Vector2.Distance(transform.position, spawnPosition) < minDistanceFromBoss && intentos < intentosMaximos);
+
+        return spawnPosition;
     }
+
 }

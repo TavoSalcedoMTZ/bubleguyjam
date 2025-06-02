@@ -24,7 +24,7 @@ public class Proyectil : MonoBehaviour
         // Mover el proyectil en la dirección calculada
         transform.Translate(direccion * velocidad * Time.deltaTime);
     }
-
+    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Detectar colisión con un objeto
@@ -41,4 +41,25 @@ public class Proyectil : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    */
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Target"))
+        {
+            JabonManage jabonManage = collision.transform.GetComponent<JabonManage>();
+            if (jabonManage != null)
+            {
+                jabonManage.JabonDicrese(dano);
+            }
+
+            // Destruir el proyectil al impactar
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
