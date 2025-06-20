@@ -1,72 +1,62 @@
-using System.Collections;
 using UnityEngine;
-using Pathfinding;
 
 public class Jefe3 : MonoBehaviour
 {
-    private AIPath path;
     [SerializeField] private Transform target;
-    [SerializeField] private float tiempoAtaque;
 
-    private float temporizador;
-    private Coroutine rutinaAtaque;
-
-    [SerializeField] private AtaqueJefe3CaC ataqueCuerpoACuerpo;
-    [SerializeField] private AtaqueJefe3Distancia ataqueADistancia;
+    [Header("Referencias de componentes")]
     [SerializeField] private MovimientoJefe3 movimiento;
+    [SerializeField] private AtaqueJefe3 ataque;
 
-    // Umbrales de distancia para elegir el tipo de ataque
-    [SerializeField] private float umbralAtaqueCac;
-    [SerializeField] private float umbralAtaqueDis;
+    private float distanciaAlTarget;
 
     private void Start()
     {
-        path = GetComponent<AIPath>();
+        if (movimiento != null)
+        {
+            movimiento.SetTarget(target);
+        }
+
+        // Establece dirección de disparo por defecto si quieres que dispare hacia el jugador
+        if (ataque != null)
+        {
+            ataque.direccionDisparo = (target.position - transform.position).normalized;
+        }
     }
 
     private void Update()
     {
-        if (target != null)
+        if (target == null || movimiento == null || ataque == null)
+            return;
+
+        distanciaAlTarget = Vector2.Distance(transform.position, target.position);
+
+        // Cambia comportamiento según modo de ataque activo
+        if (ataque.EstaEnModoCuerpoACuerpo())
         {
-            temporizador += Time.deltaTime;
-            if (temporizador >= tiempoAtaque)
+            if (distanciaAlTarget <= movimiento.stopDistanceThresholdCac)
             {
-                ElegirAtaque(); // Elegir ataque según distancia
-                temporizador = 0f;
+                movimiento.DetenerMovimiento();
+                ataque.IniciarAtaqueCuerpoACuerpo();
             }
-
-            // Revisar la distancia y detener el ataque cuerpo a cuerpo si nos alejamos del objetivo
-            float distanceToTarget = Vector2.Distance(transform.position, target.position);
-            if (distanceToTarget > umbralAtaqueCac)
+            else
             {
-                // Si estamos fuera del rango de ataque cuerpo a cuerpo, detenerlo
-                ataqueCuerpoACuerpo.DetenerAtaque();
+                movimiento.ReanudarMovimiento();
+                ataque.DetenerAtaque();
             }
         }
-    }
-
-    private void ElegirAtaque()
-    {
-        // Calcular la distancia al objetivo
-        float distanceToTarget = Vector2.Distance(transform.position, target.position);
-
-        // Decidir el tipo de ataque según la distancia
-        if (distanceToTarget <= umbralAtaqueCac) // Si está a 5 unidades o menos, ataque cuerpo a cuerpo
+        else // Ataque a distancia
         {
-            ataqueCuerpoACuerpo.IniciarAtaque();
+            if (distanciaAlTarget <= movimiento.stopDistanceThresholdDis)
+            {
+                movimiento.DetenerMovimiento();
+                ataque.IniciarAtaqueDistancia(target.position - transform.position);
+            }
+            else
+            {
+                movimiento.ReanudarMovimiento();
+                ataque.DetenerAtaque();
+            }
         }
-        else if (distanceToTarget > umbralAtaqueDis) // Si está a más de 5 unidades, ataque a distancia
-        {
-            ataqueADistancia.Disparar(target.position);
-        }
-        else
-        {
-            Debug.Log("Ningún ataque seleccionado. Fuera de rango.");
-        }
-    }
-
-    public void SetTarget(Transform newTarget)
-    {
-        target = newTarget;
     }
 }

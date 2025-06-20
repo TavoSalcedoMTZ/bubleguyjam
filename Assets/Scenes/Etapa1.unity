@@ -13316,39 +13316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6d0c872d358fe49a0e3f12acf162dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeedInicial: 1
+  moveSpeedInicial: 2
   stopDistanceThresholdCac: 3
   stopDistanceThresholdDis: 6
   moveSpeed: 2
   target: {fileID: 681647157}
---- !u!114 &320624109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320624105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4d01d6ca5421fc469d297fa4dc7aab0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabBala: {fileID: 9095635798791073064, guid: bec55b5b648a3434fadd5f41e2942f68, type: 3}
-  puntoDeDisparo: {fileID: 843232354}
---- !u!114 &320624110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320624105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33815a3608735f14a9277f17c4663261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tiempoAtaque: 1
-  enemigoScript: {fileID: 320624107}
 --- !u!114 &320624111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13362,12 +13334,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 681647157}
-  tiempoAtaque: 1
-  ataqueCuerpoACuerpo: {fileID: 320624110}
-  ataqueADistancia: {fileID: 320624109}
   movimiento: {fileID: 320624108}
-  umbralAtaqueCac: 2
-  umbralAtaqueDis: 5
+  ataque: {fileID: 0}
+--- !u!114 &320624117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320624105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f01ba7c225ee6e4aab47b2ef92a6bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemigoScript: {fileID: 320624107}
+  tiempoCambioModo: 5
+  probabilidadDeCambiarModoAtaque: 0.5
+  tiempoAtaqueCaC: 1.6
+  dano: 2
+  prefabBala: {fileID: 9095635798791073064, guid: bec55b5b648a3434fadd5f41e2942f68, type: 3}
+  puntoDeDisparo: {fileID: 681647157}
+  intervaloDisparo: 1.8
+  direccionDisparo: {x: 1, y: 0}
+  objetivo: {fileID: 681647157}
+  rangoAtaqueCaC: 1.5
 --- !u!1 &321605305
 GameObject:
   m_ObjectHideFlags: 0
@@ -41715,11 +41706,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &843232354 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7382424193140601173, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
-  m_PrefabInstance: {fileID: 1993243805}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &847579693
 GameObject:
   m_ObjectHideFlags: 0
@@ -49606,11 +49592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6448773857666106857, guid: 88cf35c1b2c7640478c4aeeca3b476eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6448773857666106857, guid: 88cf35c1b2c7640478c4aeeca3b476eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6448773857666106857, guid: 88cf35c1b2c7640478c4aeeca3b476eb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -99264,13 +99250,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jefe 3 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7344663954996730860, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344663954996730860, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194205398132005029, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5188679
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194205398132005029, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194205398132005029, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.40266922
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194205398132005029, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8818011003025514279, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 998.6119
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8818011003025514279, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1003.431
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8818011003025514279, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -99304,7 +99314,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5825247537574601585, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -99313,16 +99324,13 @@ PrefabInstance:
       addedObject: {fileID: 320624111}
     - targetCorrespondingSourceObject: {fileID: 125644612991177487, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 320624110}
-    - targetCorrespondingSourceObject: {fileID: 125644612991177487, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 320624109}
-    - targetCorrespondingSourceObject: {fileID: 125644612991177487, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 320624108}
     - targetCorrespondingSourceObject: {fileID: 125644612991177487, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 320624107}
+    - targetCorrespondingSourceObject: {fileID: 125644612991177487, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 320624117}
   m_SourcePrefab: {fileID: 100100000, guid: 9820f9cd3dda50844be4d1d4ef060b5a, type: 3}
 --- !u!1 &1993850500
 GameObject:

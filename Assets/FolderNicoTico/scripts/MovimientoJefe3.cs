@@ -43,4 +43,14 @@ public class MovimientoJefe3 : MonoBehaviour
     {
         target = newTarget;
     }
+    public void DetenerMovimiento()
+    {
+        moveSpeed = 0f;
+    }
+
+    public void ReanudarMovimiento()
+    {
+        moveSpeed = moveSpeedInicial;
+    }
+
 }
