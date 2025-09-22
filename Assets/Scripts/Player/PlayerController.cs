@@ -2,15 +2,40 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static PlayerController Instance { get; private set; }
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+
+    [Header("Scripts Refs")]
+    public PlayerMovement playerMovement;
+    public PlayerSight playerSight;
+
+
+
+    private void Start()
     {
-        
+        playerMovement = GetComponent<PlayerMovement>();
+        playerSight = GetComponent<PlayerSight>();
     }
+
+
+
+
+
+
+
+
 }
